@@ -1,0 +1,242 @@
+{
+  "schema_version": "1.0",
+  "source": "05_person_centered_profiles.ipynb rerun on composite_scores.csv (N=339)",
+  "fitted_on": "2026-10-22",
+  "n_respondents": 339,
+  "indicators_used_for_clustering": [
+    "AIU",
+    "CO",
+    "AIL",
+    "MMR"
+  ],
+  "indicator_note": "CTE is deliberately excluded from clustering inputs; it is reported per profile only as a validation/outcome variable.",
+  "algorithm": {
+    "estimator": "sklearn.mixture.GaussianMixture",
+    "covariance_type": "diag",
+    "n_init": 20,
+    "random_state": 42
+  },
+  "standardization": {
+    "method": "z-score, computed on the N=339 analytic sample, ddof=1",
+    "mean": {
+      "AIU": 3.166372,
+      "CO": 2.942183,
+      "AIL": 3.367552,
+      "MMR": 3.538643
+    },
+    "std": {
+      "AIU": 0.941823,
+      "CO": 0.958776,
+      "AIL": 0.850484,
+      "MMR": 0.916779
+    },
+    "formula": "z = (raw_composite - mean[construct]) / std[construct]"
+  },
+  "classification_formula": {
+    "description": "To classify a new respondent: (1) compute their four raw composite scores (mean of the 5 items per construct, after reverse-scoring, 1-5 scale); (2) standardize each using the mean/std above; (3) for each profile i, compute the diagonal-Gaussian log-density log N(z | mean_z_i, variance_z_diag_i) summed across the 4 indicators, add log(mixing_weight_i); (4) the predicted profile is argmax over i; posterior probability per profile is obtained by softmax-normalizing those 3 (or 4) values.",
+    "diag_gaussian_logpdf_per_dim": "-0.5*log(2*pi*var) - ((z - mean)^2)/(2*var)"
+  },
+  "primary_model": {
+    "k": 3,
+    "bic": 3732.6,
+    "entropy": 0.707,
+    "selection_rationale": "k=3 retained as primary over k=4 despite k=4's lower BIC/higher entropy: every K=3 profile pair is Tukey-significant on CTE (all p<.01), whereas K=4 produces one pair that is not (p=.989, a fragmentation of K3 profile 1, not a genuine new group). See sensitivity_model for the k=4 fit.",
+    "omnibus_anova_on_cte": {
+      "F": 60.21,
+      "df1": 2,
+      "df2": 336,
+      "p": 0.0
+    },
+    "profiles": [
+      {
+        "profile_id": 1,
+        "label": "High Usage / High Offloading",
+        "n": 143,
+        "mixing_weight": 0.400409,
+        "mean_z": {
+          "AIU": 0.775829,
+          "CO": 0.755869,
+          "AIL": 0.225956,
+          "MMR": -0.001536
+        },
+        "variance_z_diag": {
+          "AIU": 0.405799,
+          "CO": 0.395366,
+          "AIL": 0.72025,
+          "MMR": 0.672115
+        },
+        "mean_raw_scale": {
+          "AIU": 3.925,
+          "CO": 3.698,
+          "AIL": 3.552,
+          "MMR": 3.506
+        },
+        "mean_cte_raw_scale": 3.35
+      },
+      {
+        "profile_id": 2,
+        "label": "Low Offloading / High Literacy & Metacognition",
+        "n": 141,
+        "mixing_weight": 0.417574,
+        "mean_z": {
+          "AIU": -0.436865,
+          "CO": -0.637119,
+          "AIL": 0.279374,
+          "MMR": 0.54868
+        },
+        "variance_z_diag": {
+          "AIU": 0.652395,
+          "CO": 0.513172,
+          "AIL": 0.509102,
+          "MMR": 0.305837
+        },
+        "mean_raw_scale": {
+          "AIU": 2.701,
+          "CO": 2.281,
+          "AIL": 3.604,
+          "MMR": 4.06
+        },
+        "mean_cte_raw_scale": 3.631
+      },
+      {
+        "profile_id": 3,
+        "label": "Low on All Dimensions",
+        "n": 55,
+        "mixing_weight": 0.182018,
+        "mean_z": {
+          "AIU": -0.704466,
+          "CO": -0.201148,
+          "AIL": -1.137987,
+          "MMR": -1.255366
+        },
+        "variance_z_diag": {
+          "AIU": 0.830179,
+          "CO": 1.202196,
+          "AIL": 1.139004,
+          "MMR": 1.030998
+        },
+        "mean_raw_scale": {
+          "AIU": 2.389,
+          "CO": 2.673,
+          "AIL": 2.28,
+          "MMR": 2.287
+        },
+        "mean_cte_raw_scale": 2.349
+      }
+    ]
+  },
+  "sensitivity_model": {
+    "k": 4,
+    "bic": 3691.1,
+    "entropy": 0.748,
+    "note": "Reported in Appendix B as a sensitivity check only -- NOT the production model. Included here for reference. Profile 4 (n=40) isolates a small, genuinely distinct, highest-CTE subgroup; profiles 1 and 3 are statistically indistinguishable on CTE (Tukey p=.989) and represent fragmentation of the k=3 'High Usage/High Offloading' profile rather than a real additional group.",
+    "omnibus_anova_on_cte": {
+      "F": 33.05,
+      "df1": 3,
+      "df2": 335,
+      "p": 0.0
+    },
+    "profiles": [
+      {
+        "profile_id": 1,
+        "label": "Moderate Usage / High Metacognition",
+        "n": 124,
+        "mixing_weight": 0.343161,
+        "mean_z": {
+          "AIU": -0.130401,
+          "CO": -0.196284,
+          "AIL": 0.034703,
+          "MMR": 0.32826
+        },
+        "variance_z_diag": {
+          "AIU": 0.359574,
+          "CO": 0.332964,
+          "AIL": 0.277717,
+          "MMR": 0.146266
+        },
+        "mean_raw_scale": {
+          "AIU": 3.024,
+          "CO": 2.742,
+          "AIL": 3.384,
+          "MMR": 3.852
+        },
+        "mean_cte_raw_scale": 3.387
+      },
+      {
+        "profile_id": 2,
+        "label": "Low on All Dimensions (fragment of K3 Profile 3)",
+        "n": 62,
+        "mixing_weight": 0.206597,
+        "mean_z": {
+          "AIU": -0.83759,
+          "CO": -0.458669,
+          "AIL": -0.931496,
+          "MMR": -0.968329
+        },
+        "variance_z_diag": {
+          "AIU": 0.609328,
+          "CO": 1.150938,
+          "AIL": 1.350569,
+          "MMR": 1.197944
+        },
+        "mean_raw_scale": {
+          "AIU": 2.303,
+          "CO": 2.448,
+          "AIL": 2.455,
+          "MMR": 2.535
+        },
+        "mean_cte_raw_scale": 2.568
+      },
+      {
+        "profile_id": 3,
+        "label": "High Usage / High Offloading (fragment of K3 Profile 1)",
+        "n": 113,
+        "mixing_weight": 0.333007,
+        "mean_z": {
+          "AIU": 0.901417,
+          "CO": 0.892957,
+          "AIL": 0.22459,
+          "MMR": -0.126886
+        },
+        "variance_z_diag": {
+          "AIU": 0.372048,
+          "CO": 0.368351,
+          "AIL": 0.89489,
+          "MMR": 0.903495
+        },
+        "mean_raw_scale": {
+          "AIU": 4.044,
+          "CO": 3.832,
+          "AIL": 3.568,
+          "MMR": 3.377
+        },
+        "mean_cte_raw_scale": 3.356
+      },
+      {
+        "profile_id": 4,
+        "label": "Low Offloading / Very High Literacy & Metacognition (highest CTE)",
+        "n": 40,
+        "mixing_weight": 0.117235,
+        "mean_z": {
+          "AIU": -0.702746,
+          "CO": -1.153616,
+          "AIL": 0.901995,
+          "MMR": 1.105997
+        },
+        "variance_z_diag": {
+          "AIU": 1.233606,
+          "CO": 0.376271,
+          "AIL": 0.280361,
+          "MMR": 0.162362
+        },
+        "mean_raw_scale": {
+          "AIU": 2.465,
+          "CO": 1.815,
+          "AIL": 4.165,
+          "MMR": 4.58
+        },
+        "mean_cte_raw_scale": 4.045
+      }
+    ]
+  }
+}

@@ -1,0 +1,18 @@
+# Respondent-level data and anything the notebooks generate from it: never commit
+*.csv
+*.xlsx
+*.xls
+*.sav
+*.pkl
+*.parquet
+data/*
+!data/README.md
+
+# Manuscript (not part of the code release)
+paper/
+
+# Local clutter
+.ipynb_checkpoints/
+__pycache__/
+.env
+.DS_Store

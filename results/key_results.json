@@ -1,0 +1,403 @@
+{
+  "schema_version": "1.0",
+  "study": {
+    "title": "AI Literacy and Metacognitive Awareness as Predictors of Critical Thinking Engagement in the Age of AI Usage Among Indian University Students",
+    "n_analytic": 339,
+    "n_raw": 368,
+    "n_pilot": 55,
+    "constructs": [
+      "AIU",
+      "CO",
+      "AIL",
+      "MMR",
+      "CTE"
+    ],
+    "construct_full_names": {
+      "AIU": "AI Usage",
+      "CO": "Cognitive Offloading",
+      "AIL": "AI Literacy",
+      "MMR": "Metacognitive Awareness",
+      "CTE": "Critical Thinking Engagement"
+    }
+  },
+  "descriptives": {
+    "AIU": {
+      "mean": 3.166,
+      "sd": 0.942,
+      "skew": -0.24
+    },
+    "CO": {
+      "mean": 2.942,
+      "sd": 0.959,
+      "skew": -0.13
+    },
+    "AIL": {
+      "mean": 3.368,
+      "sd": 0.85,
+      "skew": -0.441
+    },
+    "MMR": {
+      "mean": 3.539,
+      "sd": 0.917,
+      "skew": -0.812
+    },
+    "CTE": {
+      "mean": 3.304,
+      "sd": 0.857,
+      "skew": -0.245
+    },
+    "correlations": {
+      "AIU_CO": 0.583,
+      "AIU_AIL": 0.193,
+      "AIU_MMR": 0.071,
+      "AIU_CTE": 0.111,
+      "CO_AIL": -0.012,
+      "CO_MMR": -0.184,
+      "CO_CTE": -0.143,
+      "AIL_MMR": 0.429,
+      "AIL_CTE": 0.571,
+      "MMR_CTE": 0.569
+    }
+  },
+  "measurement_model": {
+    "n_items": 25,
+    "fit": {
+      "chi_square": 394.63,
+      "df": 265,
+      "p": "<.001",
+      "CFI": 0.969,
+      "TLI": 0.965,
+      "RMSEA": 0.038
+    },
+    "loading_range": [
+      0.441,
+      0.873
+    ],
+    "reliability_validity": {
+      "MMR": {
+        "loading_range": [
+          0.541,
+          0.873
+        ],
+        "alpha": 0.873,
+        "CR": 0.879,
+        "AVE": 0.599
+      },
+      "AIU": {
+        "loading_range": [
+          0.606,
+          0.776
+        ],
+        "alpha": 0.847,
+        "CR": 0.849,
+        "AVE": 0.531
+      },
+      "AIL": {
+        "loading_range": [
+          0.593,
+          0.801
+        ],
+        "alpha": 0.845,
+        "CR": 0.849,
+        "AVE": 0.531
+      },
+      "CO": {
+        "loading_range": [
+          0.585,
+          0.827
+        ],
+        "alpha": 0.88,
+        "CR": 0.883,
+        "AVE": 0.604
+      },
+      "CTE": {
+        "loading_range": [
+          0.441,
+          0.765
+        ],
+        "alpha": 0.801,
+        "CR": 0.808,
+        "AVE": 0.464
+      }
+    },
+    "htmt_max": {
+      "pair": "AIL-CTE",
+      "value": 0.693,
+      "threshold": 0.85
+    }
+  },
+  "pilot_reliability": {
+    "n": 55,
+    "MMR": {
+      "alpha": 0.596,
+      "omega": 0.695,
+      "alpha_95ci": [
+        0.42,
+        0.714
+      ]
+    },
+    "AIU": {
+      "alpha": 0.804,
+      "omega": 0.817,
+      "alpha_95ci": [
+        0.704,
+        0.866
+      ]
+    },
+    "AIL": {
+      "alpha": 0.656,
+      "omega": 0.676,
+      "alpha_95ci": [
+        0.442,
+        0.776
+      ]
+    },
+    "CO": {
+      "alpha": 0.87,
+      "omega": 0.87,
+      "alpha_95ci": [
+        0.795,
+        0.915
+      ]
+    },
+    "CTE": {
+      "alpha": 0.441,
+      "omega": 0.507,
+      "alpha_95ci": [
+        0.11,
+        0.622
+      ]
+    }
+  },
+  "structural_model": {
+    "outcome": "CTE",
+    "r_squared": 0.591,
+    "estimator": "one-step latent SEM, maximum likelihood (semopy)",
+    "paths": {
+      "AIU": {
+        "beta": 0.086,
+        "se": 0.087,
+        "z": 1.07,
+        "p": 0.287,
+        "vif": 1.64,
+        "bootstrap_ci95": [
+          -0.093,
+          0.262
+        ]
+      },
+      "CO": {
+        "beta": -0.141,
+        "se": 0.064,
+        "z": -1.79,
+        "p": 0.074,
+        "vif": 1.65,
+        "bootstrap_ci95": [
+          -0.311,
+          0.032
+        ]
+      },
+      "AIL": {
+        "beta": 0.446,
+        "se": 0.062,
+        "z": 6.55,
+        "p": "<.001",
+        "vif": 1.27,
+        "bootstrap_ci95": [
+          0.319,
+          0.573
+        ]
+      },
+      "MMR": {
+        "beta": 0.398,
+        "se": 0.06,
+        "z": 6.03,
+        "p": "<.001",
+        "vif": 1.3,
+        "bootstrap_ci95": [
+          0.259,
+          0.517
+        ]
+      }
+    },
+    "bootstrap": {
+      "n_resamples": 1000,
+      "seed": 42,
+      "failed_to_converge": 0
+    }
+  },
+  "hypotheses": {
+    "H1": {
+      "statement": "AIL positively associated with CTE",
+      "result": "beta=0.446, p<.001",
+      "supported": true
+    },
+    "H2": {
+      "statement": "MMR positively associated with CTE",
+      "result": "beta=0.398, p<.001",
+      "supported": true
+    },
+    "H3": {
+      "statement": "CO negatively associated with CTE",
+      "result": "beta=-0.141, p=.074 under primary ML/Pearson estimator; significant (p=.039) under ordinal/polychoric robustness check (see ordinal_robustness_check)",
+      "supported": "Not supported at primary estimator; estimator-sensitive"
+    },
+    "H4": {
+      "statement": "AIU not significantly associated with CTE",
+      "result": "beta=0.086, p=.287",
+      "supported": true
+    },
+    "H5": {
+      "statement": "No moderation of AIL-CTE / MMR-CTE slopes by AIU level",
+      "result": "joint F=0.350, p=.705",
+      "supported": "No interaction detected"
+    }
+  },
+  "usage_moderation_h5": {
+    "AIL_x_AIU": {
+      "b": 0.011,
+      "p": 0.819
+    },
+    "MMR_x_AIU": {
+      "b": 0.023,
+      "p": 0.56
+    },
+    "joint_test": {
+      "F": 0.35,
+      "p": 0.705,
+      "delta_r2": 0.001
+    },
+    "additive_covariate_block": {
+      "overall": {
+        "F_df1": 5,
+        "F_df2": 329,
+        "F": 1.511,
+        "p": 0.186
+      },
+      "usage_intensity": {
+        "b": 0.057,
+        "p": 0.151
+      },
+      "non_stem_field": {
+        "b": 0.179,
+        "p": 0.042,
+        "note": "significant but incidental term"
+      }
+    }
+  },
+  "exploratory_ail_x_mmr_interaction": {
+    "b": -0.01,
+    "p": 0.789,
+    "delta_r2": 0.0001
+  },
+  "ordinal_robustness_check": {
+    "description": "25 items re-estimated as ordinal (polychoric correlations, ULS estimator) instead of continuous ML/Pearson",
+    "mardia_test": {
+      "skewness_chi2": 3577.1,
+      "skewness_df": 2925,
+      "skewness_p": "<.001",
+      "kurtosis_z": 10.32,
+      "kurtosis_p": "<.001"
+    },
+    "paths": {
+      "AIL": {
+        "baseline_beta": 0.446,
+        "ordinal_beta": 0.45,
+        "ordinal_p": "<.001"
+      },
+      "MMR": {
+        "baseline_beta": 0.398,
+        "ordinal_beta": 0.417,
+        "ordinal_p": "<.001"
+      },
+      "AIU": {
+        "baseline_beta": 0.086,
+        "baseline_p": 0.287,
+        "ordinal_beta": 0.111,
+        "ordinal_p": 0.125
+      },
+      "CO": {
+        "baseline_beta": -0.141,
+        "baseline_p": 0.074,
+        "ordinal_beta": -0.147,
+        "ordinal_p": 0.039
+      }
+    },
+    "fit": {
+      "baseline": {
+        "RMSEA": 0.038,
+        "CFI": 0.969,
+        "TLI": 0.965
+      },
+      "ordinal": {
+        "RMSEA": 0.062,
+        "CFI": 0.985,
+        "TLI": 0.983
+      }
+    }
+  },
+  "common_method_bias": {
+    "description": "Common latent factor (CLF) analysis + Harman's single-factor test, both re-estimated with ULS for like-for-like comparison",
+    "clf_variance_explained_pct": 13.1,
+    "items_with_significant_loading_on_clf": "21/25",
+    "harman_first_factor_pct": 26.2,
+    "paths_baseline_vs_clf": {
+      "AIL": {
+        "baseline_beta": 0.461,
+        "clf_beta": 0.462,
+        "p": "<.001"
+      },
+      "MMR": {
+        "baseline_beta": 0.408,
+        "clf_beta": 0.415,
+        "p": "<.001"
+      },
+      "AIU": {
+        "baseline_beta": 0.083,
+        "clf_beta": 0.099
+      },
+      "CO": {
+        "baseline_beta": -0.135,
+        "clf_beta": -0.121
+      }
+    }
+  },
+  "person_centered_profiles": {
+    "method": "Gaussian Mixture Model, diag covariance, indicators AIU/CO/AIL/MMR (CTE excluded from clustering)",
+    "k_selection": {
+      "2": {
+        "bic": 3796.1,
+        "entropy": 0.694
+      },
+      "3": {
+        "bic": 3732.6,
+        "entropy": 0.707
+      },
+      "4": {
+        "bic": 3691.1,
+        "entropy": 0.748
+      }
+    },
+    "primary_k": 3,
+    "detail": "see profile_model.json for the full fitted model (means, covariances, weights, standardization constants, and a verified classification formula)"
+  },
+  "ml_robustness_check": {
+    "description": "5-fold cross-validated linear regression vs. nested-CV-tuned Random Forest (max_depth in [2,3,4,None], min_samples_leaf in [5,10,20], n_estimators=300, random_state=42) predicting CTE from the 4 composite predictors",
+    "r_squared": {
+      "linear": {
+        "mean": 0.438,
+        "sd": 0.053
+      },
+      "random_forest": {
+        "mean": 0.404,
+        "sd": 0.041
+      }
+    },
+    "shap_mean_abs": {
+      "AIL": 0.199,
+      "MMR": 0.195,
+      "CO": 0.015,
+      "AIU": 0.005
+    }
+  },
+  "headline_summary": "AI Literacy (beta=.446) and Metacognitive Awareness (beta=.398) are significant, positive, comparably-sized predictors of Critical Thinking Engagement (R2=.591), independent of AI Usage (non-significant, beta=.086) and Cognitive Offloading (non-significant under primary estimator, beta=-.141, p=.074; significant under ordinal-robustness check). No moderation of the AIL-CTE/MMR-CTE slopes by AI usage intensity was detected (p=.705)."
+}
